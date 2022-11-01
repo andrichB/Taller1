@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author andri
+ * @author andrich
  */
 public class TallerUnoCorteTres {
 
@@ -19,43 +19,21 @@ public class TallerUnoCorteTres {
      */
     public static void main(String[] args) {
         Scanner leer = new Scanner(System.in);
+        ArrayExpansible NumerosN = new ArrayExpansible();
         int sum = 0;
         int opc; 
         int cont=1; 
-        int numN [] = null;
-        
+           
         while(cont==1){
             System.out.println("Ingrese un numero entero");
-            if(numN==null){
-                numN = new int [1];
-                do
-                {
-                    if(numN[0]<0){
-                        System.out.println("Eso no es un numero natural");
-                        System.out.println("Vuelva a intentarlo");
-                    }
-                    numN[0]=leer.nextInt();
-                }while(numN[0]<0);
-            }else{
-                int add [] = new int [numN.length+1];
-    
-                for(int i=0;i<=add.length-2;i++){
-                    add[i]=numN[i];
-                }                                                          
-                do{
-                    if(add[add.length-1]<0){
-                        System.out.println("Eso no es un numero natural");
-                        System.out.println("Vuelva a intentarlo");
-                    }
-                    add[add.length-1]=leer.nextInt();
-                }while(add[add.length-1]<0);
-                
-                numN = new int [add.length];
-                
-                for(int i=0;i<=add.length-1;i++){
-                    numN[i]=add[i];
+            NumerosN.addValor(leer.nextInt());
+            if(NumerosN.retornaValor(NumerosN.nPosiciones()-1)<0){
+                while(NumerosN.retornaValor(NumerosN.nPosiciones()-1)<0){
+                    System.out.println("Eso no es un numero natural");
+                    System.out.println("Vuelva a intentarlo");
+                    NumerosN.addValor(leer.nextInt());
                 }
-            }
+            }    
             opc=1;
             while(opc==1){
                 System.out.println("Desea ingresar otro numero?");
@@ -69,15 +47,19 @@ public class TallerUnoCorteTres {
                         opc=1;
                         System.out.println("Opcion invalida");
                     }
-                }
-            }   
-        } 
-        System.out.println("La suma de los "+numN.length+" numeros que ha ingresado es:");
-        for(int i=0;i<=numN.length-1;i++){
-            System.out.println(numN[i]);
-            sum=sum+numN[i];
+                }     
+            }
         }
-        System.out.println("_____________+");
-        System.out.println(sum);
+        if(NumerosN.nPosiciones()==1){
+            System.out.println("La suma total del numero que ha ingresado es: "+NumerosN.retornaValor(0));
+        }else{
+            System.out.println("La suma de los "+NumerosN.nPosiciones()+" numeros que ha ingresado es:");
+            for(int i=0;i<=NumerosN.nPosiciones()-1;i++){
+                System.out.println(NumerosN.retornaValor(i));
+                sum=sum+NumerosN.retornaValor(i);
+            }
+            System.out.println("---------------- +");
+            System.out.println(sum);
+        }
     }
 }
