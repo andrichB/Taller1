@@ -10,31 +10,28 @@ package tallerunocortetres;
  * @author andrich
  */
 public class ArrayExpansible {
-    int array [] = null;
     
-    public void addValor(int entero){
-        if(array==null){
-            array = new int [1];
-            array[0]=entero;
-        }else{
-            int add [] = new int  [this.array.length+1];
-            for(int i=0;i<=this.array.length-1;i++){
-                add[i]=this.array[i];
+    /**
+     *
+     * @param array
+     * @param valor
+     * @return
+     */
+    public int [] addPosition(int array [], int valor){    
+            if(array==null){
+                array= new int [1];
+                array[0] = valor;
+            }else{
+                int add [] = new int  [array.length+1];
+                for(int i=0;i<=array.length-1;i++){
+                    add[i]=array[i];
+                }
+                array = new int [add.length];
+                for(int i=0;i<=add.length-2;i++){
+                    array[i]=add[i];    
+                }
+                array[array.length-1]=valor;
             }
-            add[add.length-1] = entero;
-            this.array = new int [add.length];
-            
-            for(int i=0;i<=add.length-1;i++){
-                this.array[i]=add[i];
-            }
-        }
-    }
-    
-    public int nPosiciones(){
-        return this.array.length;
-    }
-    
-    public int retornaValor(int posicion){
-        return array[posicion];
+      return array;
     }
 }

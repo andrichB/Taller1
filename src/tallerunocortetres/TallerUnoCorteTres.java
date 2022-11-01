@@ -19,19 +19,20 @@ public class TallerUnoCorteTres {
      */
     public static void main(String[] args) {
         Scanner leer = new Scanner(System.in);
-        ArrayExpansible NumerosN = new ArrayExpansible();
+        ArrayExpansible ArrayTool = new ArrayExpansible();
         int sum = 0;
         int opc; 
-        int cont=1; 
-           
-        while(cont==1){
-            System.out.println("Ingrese un numero entero");
-            NumerosN.addValor(leer.nextInt());
-            if(NumerosN.retornaValor(NumerosN.nPosiciones()-1)<0){
-                while(NumerosN.retornaValor(NumerosN.nPosiciones()-1)<0){
+        int cont=1;
+        int NN [] = null ;
+        
+        while(cont==1){         
+            System.out.println("Ingrese un numero natural");
+            NN = ArrayTool.addPosition(NN,leer.nextInt());
+            if(NN[NN.length-1]<0){
+                while(NN[NN.length-1]<0){
                     System.out.println("Eso no es un numero natural");
                     System.out.println("Vuelva a intentarlo");
-                    NumerosN.addValor(leer.nextInt());
+                    NN[NN.length-1] = leer.nextInt();
                 }
             }    
             opc=1;
@@ -50,13 +51,13 @@ public class TallerUnoCorteTres {
                 }     
             }
         }
-        if(NumerosN.nPosiciones()==1){
-            System.out.println("La suma total del numero que ha ingresado es: "+NumerosN.retornaValor(0));
+        if(NN.length==1){
+            System.out.println("La suma total del numero natural que ha ingresado es: "+NN[0]);
         }else{
-            System.out.println("La suma de los "+NumerosN.nPosiciones()+" numeros que ha ingresado es:");
-            for(int i=0;i<=NumerosN.nPosiciones()-1;i++){
-                System.out.println(NumerosN.retornaValor(i));
-                sum=sum+NumerosN.retornaValor(i);
+            System.out.println("La suma de los "+NN.length+" numeros naturales que ha ingresado es:");
+            for(int i=0;i<=NN.length-1;i++){
+                System.out.println(NN[i]);
+                sum=sum+NN[i];
             }
             System.out.println("---------------- +");
             System.out.println(sum);
