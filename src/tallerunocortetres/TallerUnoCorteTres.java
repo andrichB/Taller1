@@ -20,47 +20,43 @@ public class TallerUnoCorteTres {
     public static void main(String[] args) {
         Scanner leer = new Scanner(System.in);
         ArrayExpansible ArrayTool = new ArrayExpansible();
-        int sum = 0;
-        int opc; 
-        int cont=1;
-        int NN [] = null ;
-        
-        while(cont==1){         
+        int suma = 0;
+        boolean opc; 
+        int opcion=1;
+        int numerosNaturales [] = null ;  
+        while(opcion==1){         
             System.out.println("Ingrese un numero natural");
-            NN = ArrayTool.addPosition(NN,leer.nextInt());
-            if(NN[NN.length-1]<0){
-                while(NN[NN.length-1]<0){
+            numerosNaturales = ArrayTool.addPosition(numerosNaturales,leer.nextInt());
+                while(numerosNaturales[numerosNaturales.length-1]<0){
                     System.out.println("Eso no es un numero natural");
                     System.out.println("Vuelva a intentarlo");
-                    NN[NN.length-1] = leer.nextInt();
-                }
-            }    
-            opc=1;
-            while(opc==1){
+                    numerosNaturales[numerosNaturales.length-1] = leer.nextInt();
+                }            
+            do{
                 System.out.println("Desea ingresar otro numero?");
                 System.out.println("1 - - - Si");
                 System.out.println("0 - - - No");
-                cont = leer.nextInt();
-                switch(cont){
-                    case 1 -> opc=0;
-                    case 0 -> opc=0;
+                opcion = leer.nextInt();
+                switch(opcion){
+                    case 1 -> opc=false;
+                    case 0 -> opc=false;
                     default -> {
-                        opc=1;
+                        opc=true;
                         System.out.println("Opcion invalida");
                     }
-                }     
-            }
+                }
+            }while(opc==true);
         }
-        if(NN.length==1){
-            System.out.println("La suma total del numero natural que ha ingresado es: "+NN[0]);
+        if(numerosNaturales.length==1){
+            System.out.println("La suma total del numero natural que ha ingresado es: "+numerosNaturales[0]);
         }else{
-            System.out.println("La suma de los "+NN.length+" numeros naturales que ha ingresado es:");
-            for(int i=0;i<=NN.length-1;i++){
-                System.out.println(NN[i]);
-                sum=sum+NN[i];
+            System.out.println("La suma de los "+numerosNaturales.length+" numeros naturales que ha ingresado es:");
+            for(int i=0;i<=numerosNaturales.length-1;i++){
+                System.out.println(numerosNaturales[i]);
+                suma=suma+numerosNaturales[i];
             }
             System.out.println("---------------- +");
-            System.out.println(sum);
+            System.out.println(suma);
         }
     }
 }
